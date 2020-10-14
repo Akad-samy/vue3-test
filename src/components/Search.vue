@@ -1,0 +1,82 @@
+<template>
+  <div
+    class="hello d-flex justify-content-center align-items-center flex-column"
+  >
+    <h2 class="font-weight-bold my-4">Cherchez Votre Produit !</h2>
+    <div class="form">
+      <input type="text" v-model="search"/>
+      <button
+        type="submit"
+        class="btn btn-warning py-3"
+        @click="getProducts"
+      >
+      </button>
+    </div>
+    <div v-if="error" class="alert alert-danger" role="alert">
+      <strong>error</strong>
+    </div>
+  </div>
+</template>
+
+<script>
+import { onBeforeMount } from 'vue'
+import useProducts from '../modules/productsModule'
+
+export default {
+  name: 'Search',
+  setup () {
+    const { search, error, getProducts } = useProducts()
+    onBeforeMount(async () => {
+      await getProducts()
+    })
+
+    return { search, error, getProducts }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.hello {
+  padding-bottom: 80px;
+}
+.form {
+  width: 100%;
+  text-align: center;
+}
+input {
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  padding: 15px;
+  color: #f1be1c;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+input:focus {
+  outline: none;
+  background-color: #f8f9fa;
+  box-shadow: -2px -2px 4px #ffffff, 4px 4px 4px #e8e9eb;
+}
+.btn {
+  height: 55px;
+  width: 40px;
+}
+.loader {
+  border: 2px solid #f3f3f3; /* Light grey */
+  border-top: 2px solid #114e6b; /* Blue */
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
