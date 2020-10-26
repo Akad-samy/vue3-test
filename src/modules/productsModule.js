@@ -1,5 +1,5 @@
 import { reactive, toRefs } from 'vue'
-import { getAllProducts } from '../axios/products.api'
+import { getAllProducts, getProductByCodeBar } from '../axios/products.api'
 
 export default function useProducts () {
   const state = reactive({
@@ -21,5 +21,16 @@ export default function useProducts () {
     }
   }
 
-  return { ...toRefs(state), getProducts }
+  const getSingleProduct = async (codebar) => {
+    try {
+      state.products = []
+      const data = await getProductByCodeBar(codebar)
+      state.products = data.data.data
+      console.log(state.products)
+    } catch (error) {
+      state.error = error
+    }
+  }
+
+  return { ...toRefs(state), getProducts, getSingleProduct }
 }

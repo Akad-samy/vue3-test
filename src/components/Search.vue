@@ -19,17 +19,12 @@
 </template>
 
 <script>
-import { onBeforeMount } from 'vue'
 import useProducts from '../modules/productsModule'
 
 export default {
   name: 'Search',
   setup () {
     const { search, error, getProducts } = useProducts()
-    onBeforeMount(async () => {
-      await getProducts()
-    })
-
     return { search, error, getProducts }
   }
 }
@@ -46,6 +41,7 @@ export default {
 }
 input {
   border: none;
+  box-shadow: 2px 2px 6px #f0f1f19a, -2px -2px 6px #f0f1f19a;
   border-radius: 5px;
   width: 50%;
   padding: 15px;
@@ -62,6 +58,7 @@ input:focus {
 .btn {
   height: 55px;
   width: 40px;
+  margin: 0 10px;
 }
 .loader {
   border: 2px solid #f3f3f3; /* Light grey */
