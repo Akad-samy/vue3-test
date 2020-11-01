@@ -30,6 +30,7 @@ export default {
     onBeforeMount(async () => {
       await getProducts()
     })
+
     return { products }
   }
 }

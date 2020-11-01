@@ -38,6 +38,9 @@ a {
 
 .router-link-exact-active {
     color: #f1be1c !important;
+    font-size: 25px;
+    border-bottom: #f1be1c 3px solid;
+    padding-bottom: 10px;
   }
 
 view-enter-active, .view-leave-active {
