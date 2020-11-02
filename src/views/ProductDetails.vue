@@ -50,7 +50,7 @@ export default {
   setup () {
     const { products, getSingleProduct } = useProducts()
     const { getProductReviews } = useReviews()
-    const { setInFavories, items, updateFavories } = useFavories()
+    const { setInFavories, items, updateFavories, getFavories } = useFavories()
     const {
       params: { codebar }
     } = useRoute()
@@ -59,6 +59,7 @@ export default {
     onBeforeMount(async () => {
       await getSingleProduct(codebar)
       await getProductReviews(codebar)
+      await getFavories()
     })
 
     const addToFavories = () => {

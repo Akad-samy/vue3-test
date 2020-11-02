@@ -1,7 +1,7 @@
 <template>
   <ul id="navbar">
     <div class="avatar">
-      <img src="/logo.png" width="50" alt="" srcset="" />
+      <img src="/logo.png" width="50" alt="logo"/>
     </div>
     <div class="icons">
       <li>
